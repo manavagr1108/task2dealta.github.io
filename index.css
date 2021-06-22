@@ -1,0 +1,37 @@
+body{
+    margin: 0px;
+    background-color: gray;
+    overflow: hidden;
+}
+#popup{
+    display: grid;
+    grid-template-rows: 100px 50px 50px ;
+    justify-content: center;
+    align-items: center;
+    align-content: center; 
+    margin-top: 200px; 
+    margin-left: 600px;
+    margin-right:600px;
+    background-color: aqua;
+    text-align: center;
+    border-radius:30px
+}
+#dipsc{
+    font-size:50px;
+}
+a{
+    font-size: 25px;
+}
+.taskbar{
+    display:grid;
+    grid-template-columns: 100px 100px;
+    position: absolute;
+    top: 5%;
+    right: 50%;
+    background-color: white;
+    font-size: 22px;
+}
+
+#scor{
+    font-size: 40px;
+}
