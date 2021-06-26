@@ -8,16 +8,16 @@ html{
 }
 #popup{
     display: grid;
-    grid-template-rows: 1.0rem .5rem .5rem ;
+    grid-template-rows: 10rem 5rem 5rem ;
     justify-content: center;
     align-items: center;
     align-content: center; 
-    margin-top: 2.0rem; 
-    margin-left: 6.0rem;
-    margin-right:6.0rem;
+    margin-top: 20rem; 
+    margin-left: 60rem;
+    margin-right:60rem;
     background-color: aqua;
     text-align: center;
-    border-radius:3.0rem;
+    border-radius:30rem;
     display : none;
 }
 #dipsc{
@@ -38,7 +38,7 @@ html{
 }
 
 #scor{
-    font-size: 4.0rem;
+    font-size: 5rem;
 }
 
 #start{
