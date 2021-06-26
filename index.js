@@ -1,26 +1,26 @@
 const canvas = document.querySelector('canvas')
 console.log(canvas);
 canvas.fillStyle = '#808080';
-canvas.width = innerWidth
-canvas.height = innerHeight
+canvas.width = window.innerWidth
+canvas.height = window.innerHeight
 
  
- const x= canvas.width/2;
- const y= canvas.height/2;
+ var x= canvas.width/2;
+ var y= canvas.height/2;
  
  const background = canvas.getContext('2d');
 //  background.fillStyle = 'gray';
 //  background.fillRect(0,y-120,2*x,170);
 
- const box = canvas.getContext('2d');
+ var box = canvas.getContext('2d');
  box.fillStyle = 'blue';
  box.fillRect(x,y,50,50);
 var p='0';
-const path1 = canvas.getContext('2d');
+var path1 = canvas.getContext('2d');
  path1.fillStyle = 'black';
  path1.fillRect(0,y+51,2*x,2*y);
 
- const path2 = canvas.getContext('2d');
+ var path2 = canvas.getContext('2d');
  path2.fillStyle = 'black';
  path2.fillRect(0,0,2*x,y-120);
 
@@ -80,10 +80,10 @@ function animate_bottom(){
             jump.play();
         }  
 }
-const obs1 = canvas.getContext('2d');
-const obs2 = canvas.getContext('2d');
-const obs3 = canvas.getContext('2d');
-const obs4 = canvas.getContext('2d');
+var obs1 = canvas.getContext('2d');
+var obs2 = canvas.getContext('2d');
+var obs3 = canvas.getContext('2d');
+var obs4 = canvas.getContext('2d');
 var score = canvas.getContext('2d');
 
 // spawn();
