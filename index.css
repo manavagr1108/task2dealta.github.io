@@ -1,37 +1,68 @@
 body{
-    margin: 0px;
+    margin: 0rem;
     background-color: gray;
     overflow: hidden;
 }
+html{
+    font-size: 10px;
+}
 #popup{
     display: grid;
-    grid-template-rows: 100px 50px 50px ;
+    grid-template-rows: 1.0rem .5rem .5rem ;
     justify-content: center;
     align-items: center;
     align-content: center; 
-    margin-top: 200px; 
-    margin-left: 600px;
-    margin-right:600px;
+    margin-top: 2.0rem; 
+    margin-left: 6.0rem;
+    margin-right:6.0rem;
     background-color: aqua;
     text-align: center;
-    border-radius:30px
+    border-radius:3.0rem;
+    display : none;
 }
 #dipsc{
-    font-size:50px;
+    font-size:5.0rem;
 }
-a{
-    font-size: 25px;
+.reload{
+    font-size: 2.5rem;
+    cursor: pointer;
 }
 .taskbar{
     display:grid;
-    grid-template-columns: 100px 100px;
+    grid-template-columns: 1fr 1fr;
     position: absolute;
-    top: 5%;
+    top: 0%;
     right: 50%;
     background-color: white;
-    font-size: 22px;
+    font-size: 2.5rem;
 }
 
 #scor{
-    font-size: 40px;
+    font-size: 4.0rem;
 }
+
+#start{
+    position: absolute;
+    top:  45%;
+    right:  45%;
+    font-size: 3.0rem;
+    background-color: RED;
+    border: 2.0rem;
+    border-color: blue;
+    border-radius: 1.0rem;
+    padding: .3rem;
+    padding-right: .4rem;
+    padding-left: .4rem;
+}
+
+/* @media(max-width:250px) {
+    #start{
+        font-size: 1.0rem;
+    }
+    .taskbar{
+        font-size: 1rem;
+    }
+    #popup{
+        font-size: 2.0rem;
+    } */
+/* } */
