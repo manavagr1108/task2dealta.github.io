@@ -214,7 +214,7 @@ function check2(bx,by,ox,ox2)
 function gameover()
 {
     canvas.style.display = 'none';
-    popup.style.display = 'grid';
+    popup.style.display="grid";
     scor.innerHTML = 'score :' + sco;
     if(sco>hscore){
         hscore = sco;
