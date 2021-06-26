@@ -1,10 +1,8 @@
-const canvas = document.querySelector('canvas')
+var canvas = document.querySelector('canvas')
 console.log(canvas);
 canvas.fillStyle = '#808080';
 canvas.width = window.innerWidth
 canvas.height = window.innerHeight
-
- 
  var x= canvas.width/2;
  var y= canvas.height/2;
  
@@ -25,7 +23,7 @@ var path1 = canvas.getContext('2d');
  path2.fillRect(0,0,2*x,y-120);
 
 
-
+var start = document.getElementById('start');
 function move(){
     
     if (p%2=='0'){
@@ -36,6 +34,7 @@ function move(){
            p++;
        },1000)
        if(p=='0'){
+           start.style.display = 'none';
            spawn('1');
         // setInterval(spawn,5000);
        }}
@@ -91,18 +90,19 @@ var speed=0;
 var b=2*x;
 var s= 2*x;
 var sco=0;
-var hsco=0;
 var score = document.getElementById('score');
 var hscoretab = document.getElementById('hiscore')
 var hscore = localStorage.getItem("hscore");
 if (hscore === null) {
     hscore = 0;
-    localStorage.setItem("hscore", JSON.stringify(hscore))
+    localStorage.setItem("hscore",hscore);
+    hscoretab.innerHTML='highscore :' + hscore;
 }
-else {
-    hscore = JSON.parse(hscore);
-    hscoretab.innerHTML = "hiscore: " + hscore;
+else
+{
+    hscoretab.innerHTML='highscore:' +hscore;
 }
+
 function spawn(k)
 {
 //  requestAnimationFrame(spawn);
@@ -139,7 +139,7 @@ function animate_obsb1(){
     if(b==0){
         cancelAnimationFrame(bot); 
         sco++;
-        score.innerHTML = 'score :' + sco;       
+        score.innerHTML = 'score:' + sco;       
     }
 }
 var ran;
@@ -168,7 +168,7 @@ function animate_obsu1(){
     if(b==0){
         cancelAnimationFrame(bot);
         sco++;
-        score.innerHTML = "score :" + sco; 
+        score.innerHTML = "score:" + sco; 
         
     }
 }
@@ -214,13 +214,12 @@ function check2(bx,by,ox,ox2)
 function gameover()
 {
     canvas.style.display = 'none';
-    popup.style.display = 'visible';
+    popup.style.display = 'grid';
     scor.innerHTML = 'score :' + sco;
-    if(sco>hsco){
-        hsco = sco;
-        hscoretab.innerHTML = "hiscore :" + hsco;
-        localStorage.setItem("hscore", JSON.stringify(hsco));
-
+    if(sco>hscore){
+        hscore = sco;
+        hscoretab.innerHTML = "hiscore:" + hscore;
+        localStorage.setItem("hscore",sco);
     }
 
 }
