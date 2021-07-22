@@ -1,6 +1,6 @@
 body{
     margin: 0rem;
-    background-color: gray;
+    background-color: pink;
     overflow: hidden;
 }
 html{
@@ -17,8 +17,14 @@ html{
     margin-right:60rem;
     background-color: aqua;
     text-align: center;
-    border-radius:30rem;
+    border-radius:15rem;
     display : none;
+}
+#canvas_obs{
+    position: absolute;
+}
+#canvas_bg{
+    position: absolute;
 }
 #dipsc{
     font-size:5.0rem;
@@ -26,6 +32,8 @@ html{
 .reload{
     font-size: 2.5rem;
     cursor: pointer;
+    background-color: red;
+    border-radius: 5rem;
 }
 .taskbar{
     display:grid;
@@ -37,7 +45,7 @@ html{
     font-size: 2.5rem;
 }
 
-#scor{
+#score_popup{
     font-size: 5rem;
 }
 
