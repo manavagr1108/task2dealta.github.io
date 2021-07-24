@@ -2,6 +2,8 @@ var canvas = document.querySelector('#canvas_bg');
 var canvas_obs = document.querySelector('#canvas_obs');
 var power_1 = document.querySelector('#powerup_slow');
 var power_2 = document.querySelector('#powerup_life');
+var life_active = document.querySelector('#life');
+var slow = document.querySelector('#slow');
 // var canvas_powers = document.querySelector('#canvas_obs');
 canvas.fillStyle = 'black';
 canvas.width = window.innerWidth
@@ -104,9 +106,17 @@ function spawn(k) {
     }
 }
 function animate_obsb1() {
-
+    if(t==4*y/3-1){
+        box.fillStyle = 'blue';
+        box.fillRect(x - 50, t - 50, 50, 50);
+    }
+    if(t == (2 * y) / 3 + 1)
+    {
+        box.fillStyle = 'blue';
+        box.fillRect(x - 50, t, 50, 48);
+    }
     bot = requestAnimationFrame(animate_obsb1)
-    obs1.clearRect(b1 + speed + 1, (y * 4) / 3, 100, (y * 2) / 3);
+    obs1.clearRect(b1 + speed + 1, (y * 4) / 3, 99, (y * 2) / 3);
     obs1.fillStyle = 'pink';
     obs1.fillRect(b1, (y * 4) / 3, 100, (y * 2) / 3);
     b1 -= speed;
@@ -125,9 +135,17 @@ function animate_obsb1() {
     }
 }
 function animate_obsb2() {
-
+    if(t==4*y/3-1){
+        box.fillStyle = 'blue';
+        box.fillRect(x - 50, t - 50, 50, 50);
+    }
+    if(t == (2 * y) / 3 + 1)
+    {
+        box.fillStyle = 'blue';
+        box.fillRect(x - 50, t, 50, 48);
+    }
     bot = requestAnimationFrame(animate_obsb2)
-    obs2.clearRect(b2 + speed + 1, (y * 4) / 3, 100, (y * 2) / 3);
+    obs2.clearRect(b2 + speed + 1, (y * 4) / 3, 99, (y * 2) / 3);
     obs2.fillStyle = 'pink';
     obs2.fillRect(b2, (y * 4) / 3, 100, (y * 2) / 3);
     b2 -= speed;
@@ -146,8 +164,17 @@ function animate_obsb2() {
     }
 }
 function animate_obsu1() {
+    if(t==4*y/3-1){
+        box.fillStyle = 'blue';
+        box.fillRect(x - 50, t - 50, 50, 50);
+    }
+    if(t == (2 * y) / 3 + 1)
+    {
+        box.fillStyle = 'blue';
+        box.fillRect(x - 50, t, 50, 48);
+    }
     bot = requestAnimationFrame(animate_obsu1)
-    obs3.clearRect(b3 + speed + 1, 0, 100, (y * 2) / 3);
+    obs3.clearRect(b3 + speed + 1, 0, 99, (y * 2) / 3);
     obs3.fillStyle = 'pink';
     obs3.fillRect(b3, 0, 100, (y * 2) / 3);
     check(t, b3, 2);
@@ -166,8 +193,17 @@ function animate_obsu1() {
     }
 }
 function animate_obsu2() {
+    if(t==4*y/3-1){
+        box.fillStyle = 'blue';
+        box.fillRect(x - 50, t - 50, 50, 48);
+    }
+    if(t == (2 * y) / 3 + 1)
+    {
+        box.fillStyle = 'blue';
+        box.fillRect(x - 50, t, 50, 50);
+    }
     bot = requestAnimationFrame(animate_obsu2)
-    obs4.clearRect(b4 + speed + 1, 0, 100, (y * 2) / 3);
+    obs4.clearRect(b4 + speed + 1, 0, 99, (y * 2) / 3);
     obs4.fillStyle = 'pink';
     obs4.fillRect(b4, 0, 100, (y * 2) / 3);
     check(t, b4, 2);
@@ -212,7 +248,7 @@ function move() {
 
 var t = (4 * y) / 3 - 1;
 function animate_top() {
-    box.clearRect(x - 51, t - 48, 55, 55);
+    box.clearRect(x - 50, t +6, 55, 6);
     let ani = requestAnimationFrame(animate_top)
     box.fillStyle = 'blue';
     box.fillRect(x - 50, t - 50, 50, 50);
@@ -224,7 +260,7 @@ function animate_top() {
     }
 }
 function animate_bottom() {
-    box.clearRect(x - 51, t - 51, 55, 55);
+    box.clearRect(x - 51, t - 6, 55, 6);
     let ani_b = requestAnimationFrame(animate_bottom)
     box.fillStyle = 'blue';
     box.fillRect(x - 50, t, 50, 50);
@@ -253,7 +289,10 @@ function check(box_y, obstable_x, up_bottom) {
             stop();
             death.play()}
             else
-            {life--;}
+            {life--;
+                if(life<=10){
+                    life_active.innerHTML ='X0';
+                }}
         }
     }
 }
@@ -273,10 +312,9 @@ function stop() {
 ball_x_coor = 2 * x;
 ball_y_coor = 2 * y / 3 + 20;
 temp_ball = 5;
-
 function animate_ball() {
     let ani_ball = requestAnimationFrame(animate_ball);
-    box.clearRect(ball_x_coor - 25, ball_y_coor - 25, 60, 60);
+    box.clearRect(ball_x_coor - 25, ball_y_coor - 25, 50, 51);
     obs_ball.beginPath();
     obs_ball.fillStyle = 'red';
     obs_ball.arc(ball_x_coor, ball_y_coor, 20, 0, 2 * Math.PI);
@@ -284,8 +322,14 @@ function animate_ball() {
     if (ball_x_coor <= x + 21 && ball_x_coor >= x - 71) {
         if (ball_y_coor >= t - 71 && ball_y_coor <= t + 21) {
             
-            if(life==0){stop();}
-            else{life--;}
+            if(life==0){
+                stop();
+                death.play()
+            }
+            else{life--;
+            if(life<=10){
+                life_active.innerHTML ='X0';
+            }}
         }
 
     }
@@ -301,7 +345,7 @@ function animate_ball() {
     }
 
 
-    if (ball_x_coor <= -22) {
+    if (ball_x_coor <= -25) {
         cancelAnimationFrame(ani_ball);
         ball_x_coor = 2 * x;
         ball_y_coor = Math.floor(Math.random() * (2 * y / 3 - 50)) + 2 * y / 3 + 20;
@@ -310,10 +354,10 @@ function animate_ball() {
 }
 var power_x_pos = 2 * x;
 var temp_power = 1;
-power_y_slow = 60+y;
+power_y_slow = 4*y/3-50;
 power_y_life = y;
  var life =0;
-
+//  animate_power_slow()
 function animate_power_slow() {
     // console.log('1-power')
     power_ani_var = requestAnimationFrame(animate_power_slow)
@@ -322,14 +366,20 @@ function animate_power_slow() {
     power_x_pos -=8;
     if(power_x_pos <= x && power_x_pos >= x - 90){
         if (power_y_slow >= t - 90 && power_y_slow<= t) {
-            speed=6;
+            speed-=3;
+            slow_sound.play();
+            slow.innerHTML ='X1';
+            setTimeout(() =>{
+                slow.innerHTML = 'X0';
+            },4000)
+            // powerup.drawImage(power_1,2*x-100,20, 50, 50);
             powerup.clearRect(power_x_pos, power_y_slow, 50, 40)
             cancelAnimationFrame(power_ani_var)
             power_x_pos = 2 * x - 40;
             power_y_slow = (2 * y / 3) + Math.floor(Math.random() * ((2 * y / 3) - 40));
         }
     }
-    if (power_x_pos <= -40) {
+    if (power_x_pos <= -45) {
         cancelAnimationFrame(power_ani_var)
         power_x_pos = 2 * x - 40;
         power_y_slow = (2 * y / 3) + Math.floor(Math.random() * ((2 * y / 3) - 40));
@@ -345,14 +395,21 @@ function animate_power_life() {
     if(power_x_pos <= x && power_x_pos >= x - 90){
         if (power_y_life >= t - 90 && power_y_life <= t) {
             console.log('life');
-            life+=12;
+            power.play();
+            life+=20;
+            setTimeout(() =>{
+                life=0;
+                life_active.innerHTML = 'X0';
+            },12000)
+            life_active.innerHTML ='X1';
+            // powerup.drawImage(power_2,2*x-100,20, 50, 50);
             powerup.clearRect(power_x_pos, power_y_life , 50, 40)
             cancelAnimationFrame(power_ani_var)
             power_x_pos = 2 * x - 40;
             power_y_life = (2 * y / 3) + Math.floor(Math.random() * ((2 * y / 3) - 40));
         }
     }
-    if (power_x_pos <= -40) {
+    if (power_x_pos <= -45) {
         cancelAnimationFrame(power_ani_var)
         power_x_pos = 2 * x - 40;
         power_y_life = (2 * y / 3) + Math.floor(Math.random() * ((2 * y / 3) - 40));
@@ -367,12 +424,13 @@ function power_ups(no_of) {
     if (no_of == 0) {
         console.log("nope");
     }
-    else if (no_of == 1) {
+    else if (no_of == 2) {
         animate_power_slow();
     }
-    else if (no_of == 2) {
-        // animate_power_slow();
+    else if (no_of == 1) {
+        
         animate_power_life();
     }
 
 }
+
